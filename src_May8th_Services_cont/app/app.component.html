@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <app-account> </app-account>
+    </div>
+</div>
+<hr/>
+<div class="container">
+    <div class="row">
+        <app-new-account *ngFor="let acc of accounts; let i = index" [account]="acc"> </app-new-account>
+    </div>
+</div>

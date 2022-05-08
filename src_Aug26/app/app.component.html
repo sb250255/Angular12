@@ -1,0 +1,28 @@
+<!-- <h1> Excercise </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2> Parent Componenet </h2>
+      <label> Parent Component </label>
+      <input type="text" class="form-control" [(ngModel)] = "cData">
+      <span> Sub Componenet value is  : {{Subdata}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <app-sub-component [childData]="cData" (ChildChangedEvent)="ChildChanged($event)"> </app-sub-component>
+  </div>
+</div> -->
+
+<div class="container">
+  
+  <app-cockpit (OnAddSrvClicked)= "OnAddServer($event)" (onBluePrintClicked)="OnAddBluePrint($event)"> </app-cockpit>
+  <hr/>
+  <div class="row">
+    <div class="col-xs-12">
+     
+      <app-server-element *ngFor="let server of servers" [element]="server"></app-server-element>
+
+    </div>
+  </div>
+
+</div>

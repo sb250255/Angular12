@@ -1,0 +1,112 @@
+
+<h3> UpperCase Pipe</h3>
+<span> before Pipe {{myName}}</span>
+<br/><span> After 'Upper Case pipe' - {{myName | uppercase}}</span>
+<hr/>
+
+<h3> Date Pipe</h3>
+<span> before Pipe => {{da}}</span>
+<br/><span> After date pipe without parameter => {{da | date}}</span>
+<br/><span> After date pipe with 'fulldate' parameter => {{da | date :'fullDate'}}</span>
+<br/>
+
+<h3> Slice Pipe </h3>
+<ul>
+    <li *ngFor="let server of servers | slice : 0 : 3"> Server Name is => {{server}}</li>
+</ul>
+<br/>
+<h3> Currency Pipe </h3>
+<strong> Currency W/O Pipe is => {{Amount}}</strong> <br/>
+<strong> Currency is CAD is => {{Amount | currency : 'CAD'}}</strong> <br/>
+<strong> Currency is USD is => {{Amount | currency : 'USD'}}</strong> <br/>
+<strong> Currency is AUD is => {{Amount | currency : 'AUD'}}</strong> <br/>
+
+<br/> <br/>
+
+<h3> Custom Pipe </h3>
+<ul>
+    <li *ngFor="let server of servers"> server name is => {{server | sortPipe : 1:5}} </li>
+</ul>
+
+<h3> Filtered Text </h3>
+
+<div class="container">
+    <input type="text" placeholder="Enter server name to search" [(ngModel)]="filteredText">
+    <button class="btn btn-primary" (click)="OnAddSrv()">Add Server </button>
+    <div class="row">
+        <ul>
+            <li *ngFor="let server of servers | filteredPipe : filteredText"> {{server}} </li>
+        </ul>
+    </div>
+</div>
+<br/>
+<h3> Custom Pipe - Reverse String </h3>
+<div class="container">
+    <div class="row">
+
+        <ul>
+            <li *ngFor = "let server of servers"> {{server | reversePipe}}</li>
+        </ul>
+
+    </div>
+</div>
+<br/>
+
+<h3> Combination of all pipes </h3>
+<div class="container">
+    <div class="row">
+     Specify how many rows you would like to display : 
+    <select [(ngModel)]="rows">
+            <option *ngFor="let e of Employees; let i = index"> {{i+1}} </option>
+            <!-- <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option> -->
+    </select>
+    </div>
+    <div class="row">
+        Search by Emp Name : <input type="text" placeholder="Emp Name" [(ngModel)]="formatName">
+        Search by Emp Id : <input type="text" placeholder="Emp Id" [(ngModel)]="formatId">
+        <div class="container">
+                <div class="row">
+                    <div class="pull-right">
+                        How you wish to order : 
+                        <select [(ngModel)]="order">
+                                <option value="name">Emp Name A-Z</option>
+                                <option value="id">Emp Id </option>
+                                <option value="salary">Emp Salary</option>
+                        </select>
+                    </div>
+                </div>
+        </div>
+        <table>
+            <tr>
+                <th style="cursor: pointer;" (click)="onOrder('name')"> Emp Name</th>
+                <th style="cursor: pointer;" (click)="onOrder('id')"> Emp Id</th>
+                <th style="cursor: pointer;" (click)="onOrder('salary')"> Emp Salry</th>
+                <th style="cursor: pointer;" (click)="onOrder('country')"> Emp Country</th>
+                <th style="cursor: pointer;" (click)="onOrder('joinDate')"> Emp JoinDate</th>
+                <th style="cursor: pointer;" (click)="onOrder('department')"> Emp dept</th>
+            </tr>
+            <tr>
+                <th> <input type="text" #nameElement placeholder="Emp Name" (keyup)="onKeyUp('name')"> </th>
+                <th> <input type="text" #idElement placeholder="Emp Id" (keyup)="onKeyUp('id')"></th>
+                <th> <input type="text" #salaryElement placeholder="Emp Salary" (keyup)="onKeyUp('salary')"></th>
+                <th> <input type="text" #countryElement placeholder="Emp Country" (keyup)="onKeyUp('country')"></th>
+                <th> <input type="text" #JDElement placeholder="Emp Joindate" (keyup)="onKeyUp('joinDate')"></th>
+                <th> <input type="text" #deptElement placeholder="Emp Dept" (keyup)="onKeyUp('department')"></th>
+            </tr>
+            <tr *ngFor="let employee of Employees | slice : 0:rows |orderByPipe : order | filteredPipe : {name :formatName, id:formatId } | filteredPipe : filterText : filterBy">
+                <td>{{employee.name | uppercase}}</td>
+                <td>{{employee.id}}</td>
+                <td>{{employee.salary | currency : getCurrency(employee.country)}}</td>
+                <td>{{employee.country | uppercase}}</td>
+                <td>{{employee.joinDate | date : 'fullDate'}}</td>
+                <td>{{employee.department | uppercase}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<br/><br/>
+

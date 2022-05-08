@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading" (click)="onHeaderClick()">
+      {{element.name}}
+  </div>
+  <div class="panel-body" *ngIf="displayPanelBody">
+    <p *ngIf="element.type == 'server'" [ngStyle]="{color:'red'}"> {{element.content}} </p>  
+    <em *ngIf="element.type == 'blueprint'" [ngStyle] = "{color : 'blue'}"> {{element.content}}</em>
+  </div>
+</div>

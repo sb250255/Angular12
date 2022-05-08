@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <app-game-control (IntervalStarted)="onEachInterval($event)"> </app-game-control>
+        </div>
+        <div>
+            <button class="btn btn-warning" (click)="OnbtnClick()"> {{btnText}}</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div *appUnless="!displayOdd">
+            <div class="col-xs-12">
+                <app-odd *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"> </app-odd>
+            </div>
+        </div>
+        <!-- <ng-template [ngIf]="displayOdd">
+                <div class="col-xs-12">
+                        <app-odd *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"> </app-odd>
+                </div>
+        </ng-template> -->
+
+        <div *appUnless="displayOdd">
+            <div class="col-xs-12">
+                <app-even *ngFor="let evenNumber of evenNumbers" [number]="evenNumber"> </app-even>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div [ngSwitch]="value">
+            <p *ngSwitchCase="1"> value is 1</p>
+            <p *ngSwitchCase="2"> value is 2 </p>
+            <p *ngSwitchCase="5"> value is 5</p>
+            <p *ngSwitchDefault> No number matches </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <ul *ngFor="let myNum of primaryNumbers" [ngSwitch]="myNum.type">
+            <li *ngSwitchCase="'Even'" class="text-success"> {{myNum.num}} is even </li>
+            <li *ngSwitchCase="'odd'" class="text-danger"> {{myNum.num}} is odd </li>
+            <li *ngSwitchCase="'Prime'" class="text-warning"> {{myNum.num}} is Prime </li>
+            <li *ngSwitchDefault class="text-warning"> Number is 0 </li>
+        </ul>
+    </div>
+   
+</div>

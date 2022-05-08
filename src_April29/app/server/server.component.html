@@ -1,0 +1,64 @@
+<!-- Property binding -->
+<button class="btn-primary" [disabled] = "!SetStatus" (click)="onCheckStatus()" >Check Server Status</button>
+<br/>
+<!-- Event binding -->
+<button class="btn-success" (click) = "onClick()" > Enable the server</button>
+<!-- string interpolation -->
+<br/> <br/>
+<p *ngIf="getSrvStatus() == true; else GotoElse" [ngStyle]="{color : 'green'}"> Server Status is : {{serverStatus}} </p>
+<!-- <p *ngIf ="srvStatus == false"> Server is not running </p> -->
+<ng-template #GotoElse>
+<P [ngStyle]="{color : 'red'}"> Server is not running </P>
+</ng-template>
+<br/>
+<br/> 
+<div>
+    <!-- ngStyle -->
+    <!-- <p [ngStyle]="{backgroundColor : srvStatus == true ? 'green' : 'red'}"> Server Status {{srvStatus}}</p> -->
+    <!-- <p [ngStyle]="{backgroundColor : getStyleBgColor()}"> Server Status {{srvStatus}}</p> -->
+
+    <!-- ngClass -->
+    <p [ngClass]="{active : srvStatus == true, notActive : srvStatus == false}"> Server Status {{srvStatus}}</p>
+</div>
+<!-- ngFor -->
+<div>
+    <table>
+        <tr>
+            <th> Index </th>
+            <th>Server Name</th>
+            <th> Server Status</th>
+
+        </tr>
+        <tr *ngFor="let server of servers; let i = index" 
+        [ngStyle]="{backgroundColor : server.status == true ? 'green' : 'red'}">
+            <td> {{i+1}} </td>
+            <td> {{server.name}} </td>
+            <td [ngStyle] = "{color : server.status == true ? 'green' : 'red'}"> {{server.status}} </td>
+        </tr>
+    </table>
+</div>
+
+
+
+    <button class="btn btn-primary" (click) = "onLog()"> Logs the Details</button>
+<p *ngIf="passwordHint == true ; else noHint" 
+    [ngStyle]="{backgroundColor : 'green'}"> Passsword hint - "tuna"</p>
+    <ng-template #noHint>
+        <p [ngStyle]="{backgroundColor: 'red'}"> No Passsword hint is available </p>
+    </ng-template>
+<div *ngFor="let date of dates; let i = index">
+    <p [ngStyle]="{color : i >= 4? 'red' : 'blue'}"> Last logged in at {{date}} </p>
+</div>
+
+<!-- 2 Way data binding
+<input type="text" class="form-control" [(ngModel)] = "data" />
+<br/>
+Entered text is : {{data}}
+
+<h2> Binding assignment </h2>
+<input type="text" class="form-control" [(ngModel)] = "uname"><br/>
+
+<button class="btn btn-primary" [disabled] = "uname == ''" (click)="OnReset()">Reset</button> -->
+
+
+    

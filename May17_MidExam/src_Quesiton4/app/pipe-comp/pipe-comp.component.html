@@ -1,0 +1,83 @@
+<p>
+  pipe-comp works!
+</p>
+<div class="container">
+  <div class="row">
+  <strong style="color:red">Question(1) - Display dynamically the whole length of array </strong> Specify how many rows you would like to display : 
+  <select>
+          <option> 1 </option>
+         
+  </select>
+  </div>
+  <div class="row">
+      <strong style="color:red">Qustion(6) filter based on entered text in both input boxes</strong>
+      Search by User Progress : <input type="text" placeholder="User Progress">
+      Search by USer Name : <input type="text" placeholder="User Name">
+      <div class="container">
+              <div class="row">
+                  <div class="pull-right">
+                    <strong style="color:red">Qustion(2) OrderBy</strong>  How you wish to order : 
+                      <select>
+                              <option value="name">User Name </option>
+                              <option value="id">User Progress </option>
+                              <option value="salary">User ID</option>
+                      </select>
+                  </div>
+              </div>
+      </div>
+      <div  class="container">
+          <div class="row">
+              <div class="col-xs-12 col-md-8 col-md-offset-2">
+                  <div class="pull-left">
+                       <input type="checkbox"> Only users name start with letter 'M'
+                  </div>
+              </div>
+          </div>
+      </div>
+      <strong style="color:red">Question(3) -create custom pipe to the checkbox click  </strong> <br/>
+      <strong style="color:red"> Question(4) - OrderBy HeaderClick</strong> <br/>
+
+      <strong style="color:red"> Question (5) -Search based on entered text in each row </strong>
+      <table>
+          <tr>
+              <th style="cursor: pointer;"> User Id</th>
+              <th style="cursor: pointer;"> USer Name</th>
+              <th style="cursor: pointer;"> User Progress</th>
+              <th style="cursor: pointer;"> User Color </th>
+          </tr>
+         
+          <tr>
+              <th> <input type="text" placeholder="User Id"> </th>
+              <th> <input type="text" placeholder="USer Name"></th>
+              <th> <input type="text"placeholder="User Progress"></th>
+              <th> <input type="text" placeholder="User Color"></th>
+          </tr>
+          <tr>
+              <td> Bind User Name here </td>
+              <td> Bind User Id here  </td>
+              <td> Bind User Progress here  </td>
+              <td> Bind User Color here  </td>
+          </tr>
+      </table>
+      
+      <div class="container">
+          <div class="row">
+             
+              <div class="pull-right">
+                  <strong style="color:red">Qustion(7) dynamically display the pages based on length of the users array and apply 'active' class.</strong> <br/>
+                  <strong style="color:red">Qustion(7) Add First, Last, Next,Previous clicks to display the data </strong>
+                      <ul class="pagination">
+                          <li><a>First </a></li>
+                          <li><a>Previous</a></li>
+                          <!-- <li [ngClass]="{'active': pageIndex == 1}"><a (click)="onPage(1)"> 1 </a></li>
+                          <li [ngClass]="{'active' : pageIndex == 2}"><a (click)="onPage(2)"> 2 </a></li>
+                          <li [ngClass]="{'active' : pageIndex == 3}"><a (click)="onPage(3)"> 3 </a></li> -->
+                          <li> <a > 1-2-3.. </a></li>
+                          <li><a > Next</a></li>
+                          <li> <a> Last</a></li>
+                      </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
